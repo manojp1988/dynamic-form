@@ -1,0 +1,21 @@
+<div class="input-group" [class.error]="isError" [class.required]="isRequired">
+  <div class="field-desc">
+    <label>{{fieldDescription}}</label>
+  </div>
+  <div class="field">
+    <ng-container [ngSwitch]="fieldType">
+      <input type="text" [disabled]="disabled" *ngSwitchCase="'TEXT'" (keyup)="onFieldChange($event.target.value)">
+      <select *ngSwitchCase="'SELECT'" [disabled]="disabled" (change)="onFieldChange($event.target.value)">
+        <option *ngFor="let option of options">{{option}}</option>
+      </select>
+      <input type="checkbox" [disabled]="disabled" *ngSwitchCase="'CHECKBOX'" (change)="onFieldChange($event.target.checked)">
+      <ng-container *ngSwitchCase="'RADIO'">
+        <ng-container *ngFor="let option of options">
+          <input type="radio" [disabled]="disabled" name="group" [value]="option" (change)="onFieldChange($event.target.value)">{{option}}
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <span class="suffix" *ngIf="fieldType !== 'RADIO' && isRequired">*</span>
+    <label class="error-msg" *ngFor="let message of errorMessages">{{message}}</label>
+  </div>
+</div>

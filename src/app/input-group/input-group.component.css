@@ -1,0 +1,49 @@
+input[type="text"] {
+  width: 150px;
+}
+
+/* input[type="radio"]{
+    padding: 2px;
+} */
+
+select {
+  width: 150px;
+}
+
+.input-group {
+  padding: 10px;
+  display: flex;
+  font-size: 0.9em;
+}
+
+.input-group .field-desc {
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 25%;
+}
+
+.input-group .field {
+  width: 75%;
+}
+
+.input-group.error .error-msg {
+  font-size: 10px;
+  color: red;
+  display: block;
+}
+
+.input-group:not(.error) .error-msg {
+  display: none;
+}
+
+.input-group.error input,
+.input-group.error select {
+  border: 1px solid red;
+}
+
+.input-group.error > span {
+  color: red;
+}
